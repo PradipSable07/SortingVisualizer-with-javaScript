@@ -26,7 +26,7 @@ function shuffleArray(array) {
 	return array;
 }
 
-btns[5].addEventListener("click", () => {
+btns[4].addEventListener("click", () => {
 	arr = shuffleArray(arr);
 	let i = 0;
 	container.innerHTML = "";
@@ -118,7 +118,7 @@ async function mergeSort() {
 		arr[i].classList.add("swap-animation");
 		arr[i].style.height = sortedArray[i].style.height;
 		arr[i].innerHTML = sortedArray[i].innerHTML;
-		await new Promise((resolve) => setTimeout(resolve, 500));
+		await new Promise((resolve) => setTimeout(resolve, 300));
 		arr[i].classList.remove("swap-animation");
 	}
 }
@@ -152,9 +152,9 @@ function merge(left, right) {
 	return merged.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 
-btns[2].addEventListener("click", () => {
-	mergeSort();
-});
+// btns[2].addEventListener("click", () => {
+// 	mergeSort();
+// });
 // ***************************************** < Quick sort > ***********************************************
 async function quickSort() {
 	let arr = document.querySelectorAll(".container div");
@@ -199,7 +199,7 @@ async function swap(arr, i, j) {
 	arr[j].innerHTML = temp2;
 }
 
-btns[3].addEventListener("click", () => {
+btns[2].addEventListener("click", () => {
 	quickSort();
 });
 // ***************************************** < Heap sort > ***********************************************
@@ -275,6 +275,37 @@ async function heapify(arr, n, i) {
 	}
 }
 
-btns[4].addEventListener("click", () => {
+btns[3].addEventListener("click", () => {
 	heapSort();
 });
+
+// ***************************************** < Insertion sort > ***********************************************
+async function insertionSort() {
+	let arr = document.querySelectorAll(".container div");
+	for (let i = 1; i < arr.length; i++) {
+		let key = parseInt(arr[i].style.height);
+
+		let j = i - 1;
+
+		while (j >= 0 && parseInt(arr[j].style.height) > key) {
+			arr[j].classList.add("swap-animation");
+			arr[j + 1].classList.add("swap-animation");
+
+			arr[j + 1].style.height = arr[j].style.height;
+			arr[j + 1].innerHTML = arr[j].innerHTML;
+
+			arr[j].classList.remove("swap-animation");
+			arr[j + 1].classList.remove("swap-animation");
+
+			j--;
+			await new Promise((resolve) => setTimeout(resolve, 500));
+		}
+
+		arr[j + 1].style.height = key + "px";
+		arr[j + 1].innerHTML = arr[j].arr[j + 1].innerHTML = (j + 1).toString();
+	}
+}
+
+// btns[5].addEventListener("click", () => {
+// 	insertionSort();
+// });
