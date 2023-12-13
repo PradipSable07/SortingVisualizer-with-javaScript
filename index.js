@@ -1,11 +1,11 @@
-let arr = [5, 10, 15, 25, 20, 35, 30, 40, 45, 50, 55, 60, 65, 70];
-
 let container = document.querySelector(".container");
 let btns = document.querySelectorAll(".btn");
 
 // ***************************************** <  adding array element to container > ***********************************************
 let i = 0;
-arr.forEach((element) => {
+let arr = [5, 10, 15, 25, 20, 35, 30, 40, 45, 50, 55, 60, 65, 70];
+let shuffleArraay = shuffleArray(arr);
+shuffleArraay.forEach((element) => {
 	let box = document.createElement("div");
 	box.style.height = `${element * 6}px`;
 	box.style.width = `2rem`;
